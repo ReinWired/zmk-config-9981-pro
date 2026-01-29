@@ -178,11 +178,11 @@ static void a320_poll_work_handler(struct k_work *work) {
                     if (abs(sx) > abs(sy)) {
                         int16_t scroll_x = 0;
 
-                        if (abs(sx) >= 128) {
-                            scroll_x = -sx * 0.75;
-                        } else if (abs(sx) >= 64) {
-                            scroll_x = -sx * 0.50;
-                        } else if (abs(sx) >= 21) {
+                        if (abs(sx) >= 160) {
+                            scroll_x = -sx * 0.65;
+                        } else if (abs(sx) >= 80) {
+                            scroll_x = -sx * 0.45;
+                        } else if (abs(sx) >= 24) {
                             scroll_x = -sx * 0.25;
                         } else {
                             scroll_x = (sx > 0) ? -1 : (sx < 0) ? 1 : 0;
@@ -192,11 +192,11 @@ static void a320_poll_work_handler(struct k_work *work) {
                     } else {
                         int16_t scroll_y = 0;
 
-                        if (abs(sy) >= 128) {
-                            scroll_y = -sy * 0.75;
-                        } else if (abs(sy) >= 64) {
-                            scroll_y = -sy * 0.50;
-                        } else if (abs(sy) >= 21) {
+                        if (abs(sy) >= 160) {
+                            scroll_y = -sy * 0.65;
+                        } else if (abs(sy) >= 80) {
+                            scroll_y = -sy * 0.45;
+                        } else if (abs(sy) >= 24) {
                             scroll_y = -sy * 0.25;
                         } else {
                             scroll_y = (sy > 0) ? -1 : (sy < 0) ? 1 : 0;
@@ -287,4 +287,5 @@ static int a320_init(const struct device *dev) {
 DT_INST_FOREACH_STATUS_OKAY(A320_DEFINE)
 ZMK_LISTENER(a320_hid_listener, hid_indicators_listener);
 ZMK_SUBSCRIPTION(a320_hid_listener, zmk_hid_indicators_changed);
+
 
