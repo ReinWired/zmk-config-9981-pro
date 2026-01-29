@@ -175,30 +175,35 @@ static void a320_poll_work_handler(struct k_work *work) {
                     sum_dy = 0;
                     sample_cnt = 0;
 
-                    int16_t scroll_x = 0, scroll_y = 0;
+                    if (abs(sx) > abs(sy)) {
+                        int16_t scroll_x = 0;
 
-                    if (abs(sy) >= 128) {
-                        scroll_x = -sx / 24;
-                        scroll_y = -sy / 24;
-                    } else if (abs(sy) >= 64) {
-                        scroll_x = -sx / 16;
-                        scroll_y = -sy / 16;
-                    } else if (abs(sy) >= 32) {
-                        scroll_x = -sx / 12;
-                        scroll_y = -sy / 12;
-                    } else if (abs(sy) >= 21) {
-                        scroll_x = -sx / 8;
-                        scroll_y = -sy / 8;
-                    } else if (abs(sy) >= 3) {
-                        scroll_x = (sx > 0) ? -1 : (sx < 0) ? 1 : 0;
-                        scroll_y = (sy > 0) ? -1 : (sy < 0) ? 1 : 0;
+                        if (abs(sx) >= 128) {
+                            scroll_x = -sx * 0.75;
+                        } else if (abs(sx) >= 64) {
+                            scroll_x = -sx * 0.50;
+                        } else if (abs(sx) >= 21) {
+                            scroll_x = -sx * 0.25;
+                        } else {
+                            scroll_x = (sx > 0) ? -1 : (sx < 0) ? 1 : 0;
+                        }
+                        
+                        input_report_rel(dev, INPUT_REL_HWHEEL, scroll_x, true, K_FOREVER);
                     } else {
-                        scroll_x = (sx > 0) ? -1 : (sx < 0) ? 1 : 0;
-                        scroll_y = 0;
-                    }
+                        int16_t scroll_y = 0;
 
-                    input_report_rel(dev, INPUT_REL_HWHEEL, -scroll_x, false, K_FOREVER);
-                    input_report_rel(dev, INPUT_REL_WHEEL, scroll_y, true, K_FOREVER);
+                        if (abs(sy) >= 128) {
+                            scroll_y = -sy * 0.75;
+                        } else if (abs(sy) >= 64) {
+                            scroll_y = -sy * 0.50;
+                        } else if (abs(sy) >= 21) {
+                            scroll_y = -sy * 0.25;
+                        } else {
+                            scroll_y = (sy > 0) ? -1 : (sy < 0) ? 1 : 0;
+                        }
+                        
+                        input_report_rel(dev, INPUT_REL_WHEEL, scroll_y, true, K_FOREVER);
+                    }
                 }
             }
         }
@@ -282,3 +287,4 @@ static int a320_init(const struct device *dev) {
 DT_INST_FOREACH_STATUS_OKAY(A320_DEFINE)
 ZMK_LISTENER(a320_hid_listener, hid_indicators_listener);
 ZMK_SUBSCRIPTION(a320_hid_listener, zmk_hid_indicators_changed);
+
