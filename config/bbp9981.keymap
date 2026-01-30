@@ -115,7 +115,7 @@
             bindings
                 = <&mmv MOVE_X(20000) &mmv MOVE_Y(-20000)>
                 , <&macro_press &mkp LCLK>
-                , <&mmv MOVE_Y(2000)>
+                , <&macro_tap &mmv MOVE_Y(2000)>
                 , <&macro_release &mkp LCLK>
                 ;
         };
@@ -148,7 +148,7 @@
 //        -----------------------------------------------------------------------------------------------------------------
 
                          &mkp LCLK                                                                                                                                          &mkp RCLK
-    &kp CLCK                                  &sk_kp LGUI LGUI                                       &mkp LCLK                                         &mt ESC K_BACK                            &mt F4 TAB
+    &kp CLCK                                  &mkp_kp LGUI MCLK                                      &mkp LCLK                                         &mt ESC K_BACK                            &mt F4 TAB
     &kp Q                &kp W                &kp E                &kp R                &kp T                &kp Y                &kp U                &kp I                &kp O                &kp P
     &kp A                &kp S                &kp D                &kp F                &kp G                &kp H                &kp J                &kp K                &kp L                &kp BSPC
     &sk_kp LSHFT LSHFT   &kp Z                &kp X                &kp C                &kp V                &kp B                &kp N                &kp M                &td_l3               &kp ENTER
@@ -194,6 +194,7 @@
         };
     };
 };
+
 
 
 
