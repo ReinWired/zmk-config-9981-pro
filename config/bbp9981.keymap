@@ -113,9 +113,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&mmv MOVE_X(20000) &mmv MOVE_Y(-20000)>
+                = <&mmv MOVE_X(200000) &mmv MOVE_Y(-200000)>
                 , <&macro_press &mkp LCLK>
-                , <&macro_tap &mmv MOVE_Y(2000)>
+                , <&macro_tap &mmv MOVE_Y(200000)>
                 , <&macro_release &mkp LCLK>
                 ;
         };
@@ -124,9 +124,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&mmv MOVE_X(-20000) &mmv MOVE_Y(-20000)>
+                = <&mmv MOVE_X(-200000) &mmv MOVE_Y(-200000)>
                 , <&macro_press &mkp LCLK>
-                , <&macro_tap &mmv MOVE_Y(2000)>
+                , <&macro_tap &mmv MOVE_Y(200000)>
                 , <&macro_release &mkp LCLK>
                 ;
         };
@@ -194,6 +194,7 @@
         };
     };
 };
+
 
 
 
