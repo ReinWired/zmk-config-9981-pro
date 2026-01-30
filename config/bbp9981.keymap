@@ -33,45 +33,35 @@
             tapping-term-ms = <400>;
             bindings = <&mkp LCLK>, <&bt BT_CLR>;
         };
-    };
 
-    behaviors {
         td_boot_out: td_boot_out {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
             bindings = <&bootloader>, <&out OUT_TOG>;
         };
-    };
 
-    behaviors {
         tdc_to_SYM: td_comma_to_layer {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
             bindings = <&kp SEMI>, <&to SYM>;
         };
-    };
 
-    behaviors {
         tdc_to_MEDIA: td_mute_to_layer {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
             bindings = <&kp C_MUTE>, <&to MEDIA>;
         };
-    };
 
-    behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <400>;
             bindings = <&kp &kp>;
         };
-    };
 
-    behaviors {
         sl_mo: behavior_sl_mo {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -79,9 +69,7 @@
             tapping-term-ms = <450>;       /* 长按阈值 */
             bindings = <&mo &sl>;          /* hold=MO, tap=SL */
         };
-    };
 
-    behaviors {
         sk_kp: behavior_sk_kp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -89,36 +77,28 @@
             tapping-term-ms = <450>;
             bindings = <&kp &sk>;          /* hold=kp, tap=sticky key */
         };
-    };
 
-    behaviors {
         td_l1: tap_dance_layer1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&sl_mo 1 1>, <&to 1>;
         };
-    };
 
-    behaviors {
         td_l2: tap_dance_layer2 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&sl_mo 2 2>, <&to 2>;
         };
-    };
 
-    behaviors {
         td_l3: tap_dance_layer3 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&sl_mo 3 3>, <&to 3>;
         };
-    };
 
-    behaviors {
         mkp_kp: behavior_mkp_kp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -139,9 +119,7 @@
                 , <&macro_release &mkp LCLK>
                 ;
         };
-    };
 
-    macros {
         notifications: notifications_open {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -216,6 +194,7 @@
         };
     };
 };
+
 
 
 
